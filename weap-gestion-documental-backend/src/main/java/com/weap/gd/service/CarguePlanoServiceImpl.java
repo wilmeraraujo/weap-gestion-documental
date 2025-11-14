@@ -25,7 +25,7 @@ import com.weap.gd.entity.CarguePlano;
 import com.weap.gd.repository.CarguePlanoRepository;
 
 @Service
-public class CarguePlanoImpl implements CarguePlanoService {
+public class CarguePlanoServiceImpl implements CarguePlanoService {
 	
 	@Autowired
 	private CarguePlanoRepository cargueRepository;

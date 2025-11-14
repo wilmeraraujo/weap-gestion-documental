@@ -20,7 +20,7 @@ public interface CarguePlanoRepository extends JpaRepository<CarguePlano, Long>{
 	@Query(
 			  value = """
 			    SELECT c.*
-			    FROM pro.cargue_plano c
+			    FROM cargue.cargue_plano c
 			    WHERE c.delete_at IS NULL
 			      AND c.usuario = :usuario
 			      AND (
@@ -32,7 +32,7 @@ public interface CarguePlanoRepository extends JpaRepository<CarguePlano, Long>{
 			  """,
 			  countQuery = """
 			    SELECT COUNT(*)
-			    FROM pro.cargue_plano_cita c
+			    FROM cargue.cargue_plano c
 			    WHERE c.delete_at IS NULL
 			      AND c.usuario = :usuario
 			      AND (

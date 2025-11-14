@@ -24,13 +24,16 @@ public class CarguePlano {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(name = "nombre_archivo")
 	private String nombreArchivo;
 	
 	@Column(name = "nit_prestador")
 	private String nitPrestador;
 	
+	@Column(name = "fecha_cargue")
 	private LocalDateTime fechaCargue;
 	
+	@Column(name = "errores_en_cargue")
 	private Boolean erroresEnCargue;
 	
 	@Column(name = "numero_registro")

@@ -3,12 +3,14 @@ package com.weap.gd.service;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.List;
 
+@Service
 public class ExcelExportServiceImpl<T> implements ExcelExportService<T> {
 	
 	@Override
