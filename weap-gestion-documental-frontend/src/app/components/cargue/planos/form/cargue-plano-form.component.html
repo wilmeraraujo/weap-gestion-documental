@@ -1,0 +1,96 @@
+<div
+  style="
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #ffffff, #f5f6ff);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    padding: 25px 30px;
+    text-align: center;
+  "
+>
+  <!-- Título del modal -->
+  <h2
+    style="
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #373838;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 10px;
+    "
+  >
+    {{ titulo }}
+  </h2>
+
+  <!-- Cuerpo del formulario -->
+  <form #f="ngForm" (ngSubmit)="procesar()" novalidate>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <input
+        id="archivo"
+        type="file"
+        class="form-control"
+        (change)="seleccionarArchivo($event)"
+        accept=".txt"
+        style="
+          flex: 1;
+          border: 1px solid #c5cae9;
+          border-radius: 10px;
+          padding: 10px;
+          font-size: 14px;
+          cursor: pointer;
+          transition: 0.2s;
+        "
+        onfocus="this.style.borderColor='#3f51b5'"
+        onblur="this.style.borderColor='#c5cae9'"
+      />
+
+      <button
+        type="submit"
+        [disabled]="processing"
+        style="
+          background-color: #577e57;
+          color: white;
+          padding: 10px 20px;
+          border-radius: 10px;
+          font-weight: 500;
+          border: none;
+          transition: background 0.2s ease;
+          cursor: pointer;
+        "
+        onmouseover="this.style.backgroundColor='#303f9f'"
+        onmouseout="this.style.backgroundColor='#577e57'"
+      >
+        Procesar
+      </button>
+    </div>
+  </form>
+
+  <!-- Spinner de progreso -->
+  <div
+    *ngIf="processing"
+    style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 25px;
+    "
+  >
+    <mat-progress-spinner
+      mode="determinate"
+      [value]="progreso"
+      style="color: #3f51b5"
+    ></mat-progress-spinner>
+    <span
+      style="
+        margin-top: 10px;
+        color: #3f51b5;
+        font-weight: 500;
+      "
+    >
+      Subiendo... {{ progreso }}%
+    </span>
+  </div>
+</div>

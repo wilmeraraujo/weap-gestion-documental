@@ -1,0 +1,103 @@
+<div class="dashboard-container" [class.is-mobile]="mobileQuery.matches">
+  <!-- Toolbar -->
+  <mat-toolbar color="primary" class="dashboard-toolbar">
+    <!-- Botón menú -->
+    <button mat-icon-button (click)="snav.toggle()" class="menu-button">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="branding">
+  <img src="assets/images/weap-2.jpg" alt="SAGAS" class="brand-icon">
+  <span class="brand-text">WEAP | Gestión Documental </span>
+</div>
+
+    <!-- Botón usuario -->
+    <div class="right" (mouseenter)="showInfo = true" (mouseleave)="showInfo = false">
+      <button mat-button *ngIf="isLoggedIn">
+        <span class="username">{{ username }}</span>
+        <mat-icon>person_outline</mat-icon>
+      </button>
+
+      <div class="hover-card" *ngIf="showInfo">
+        <p><strong>{{ username }}</strong></p>
+        <p><strong>Rol:</strong> Administrador</p>
+        <p><strong>Correo:</strong> {{ userEmail }}</p>
+        <mat-divider></mat-divider>
+        <button mat-menu-item *ngIf="isLoggedIn" (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          Cerrar Sesión
+        </button>
+      </div>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngIf="isLoggedIn" (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          Cerrar Sesión
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container
+    class="sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+    autosize
+  >
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+      class="snav"
+      [opened]="!mobileQuery.matches"
+    >
+      <mat-nav-list>
+        <div class="profile-card">
+          <!--<img src="\..\..\..\..\assets\images\LOGO emssanar.png" class="logo-emssanar" />-->
+          <div class="header">
+            <i class="fa-solid fa-clipboard-user"></i>
+            <h2>{{ username }}</h2>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <ng-container *ngFor="let nav of menuNav">
+          <ng-container *ngTemplateOutlet="recursiveMenu; context: { $implicit: nav }"></ng-container>
+        </ng-container>
+
+        <ng-template #recursiveMenu let-nav>
+          <a
+            mat-list-item
+            [routerLink]="nav.route"
+            *ngIf="(!nav.children || !tieneSubmenusAccesibles(nav)) && tieneAcceso(nav)"
+            [ngClass]="{ 'active-tab': esRutaActiva(nav.route) }"
+            (click)="onRouteSelected(snav)"
+          >
+            <mat-icon class="icono" *ngIf="nav.icon">{{ nav.icon }}</mat-icon>
+            <span class="name">{{ nav.name }}</span>
+          </a>
+
+          <mat-expansion-panel
+            class="margin-menu"
+            *ngIf="nav.children && tieneAcceso(nav) && tieneSubmenusAccesibles(nav)"
+          >
+            <mat-expansion-panel-header class="padding-menu" [ngClass]="{ 'active-tab': esRutaActiva(nav.route) }">
+              <mat-panel-title>
+                <mat-icon class="icono" *ngIf="nav.icon">{{ nav.icon }}</mat-icon>
+                <span class="name">{{ nav.name }}</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ng-container *ngFor="let child of nav.children">
+              <ng-container *ngTemplateOutlet="recursiveMenu; context: { $implicit: child }"></ng-container>
+            </ng-container>
+          </mat-expansion-panel>
+        </ng-template>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

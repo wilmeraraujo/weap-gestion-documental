@@ -1,0 +1,96 @@
+.center-text {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3f51b5;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  perspective: 800px;
+}
+/* Estilo base de cada letra */
+.center-text span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0);
+  animation: flyIn 1s ease-out forwards;
+}
+
+/* Animaciones escalonadas */
+.center-text span:nth-child(1) { animation-delay: 0s; transform: translateX(-120px) rotateY(60deg); }
+.center-text span:nth-child(2) { animation-delay: 0.1s; transform: translateY(-80px) rotateX(60deg); }
+.center-text span:nth-child(3) { animation-delay: 0.2s; transform: translateX(120px) rotateY(-60deg); }
+.center-text span:nth-child(4) { animation-delay: 0.3s; transform: translateY(100px) rotateX(-60deg); }
+.center-text span:nth-child(5) { animation-delay: 0.4s; transform: translateX(-100px) rotateY(45deg); }
+.center-text span:nth-child(6) { animation-delay: 0.5s; transform: translateY(-100px) rotateX(-45deg); }
+.center-text span:nth-child(7) { animation-delay: 0.6s; transform: translateX(100px) rotateY(-45deg); }
+.center-text span:nth-child(8) { animation-delay: 0.7s; transform: translateY(120px) rotateX(45deg); }
+.center-text span:nth-child(9) { animation-delay: 0.8s; transform: translateX(-80px) rotateY(30deg); }
+.center-text span:nth-child(10){ animation-delay: 0.9s; transform: translateY(-120px) rotateX(-30deg); }
+.center-text span:nth-child(11){ animation-delay: 1s; transform: translateX(150px) rotateY(-30deg); }
+
+
+/* Contenedor centrado con perspectiva 3D */
+.logo-container {
+  display: flex;
+  justify-content: center;  /* Centra horizontalmente */
+  align-items: center;       /* Centra verticalmente */
+  width: 100%;
+  margin-top: 40px;
+  perspective: 800px;
+}
+
+/* Imagen circular con efecto 3D */
+.logo-welcome {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #3f51b5;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  transform-style: preserve-3d;
+  animation:
+    fallIn 1.5s ease-out forwards, /* animación de caída */
+    spin3D 6s linear infinite 1.5s; /* empieza a girar después */
+  opacity: 0;
+}
+
+/* Efecto al pasar el mouse */
+.logo-welcome:hover {
+  transform: scale(1.1) rotateY(15deg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+/* Animación: las letras vuelan hacia el centro */
+@keyframes flyIn {
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0) rotateX(0) rotateY(0);
+  }
+}
+/* Animación de entrada: cae desde la izquierda y rota */
+@keyframes fallIn {
+  0% {
+    transform: translateX(-300px) rotateY(-180deg) scale(0.5);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(30px) rotateY(20deg) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0) rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Giro continuo 3D */
+@keyframes spin3D {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}

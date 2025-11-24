@@ -1,0 +1,197 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+ }
+ .dashboard-toolbar {
+  background-color: #577e57 !important;
+  color: white;
+}
+
+.is-mobile .dashboard-toolbar{
+  position: fixed;
+  z-index: 2;
+}
+
+h1.app-name {
+  margin-left: 8px;
+  margin-top: 15px;
+}
+
+.sidenav-container{
+  flex: 1;
+}
+
+.is-mobile .sidenav-container {
+  flex: 1 0 auto;
+}
+
+ul li {
+   list-style: none;
+}
+
+.profile-card{
+  text-align: center;
+  padding: 0 20px 20px 20px;
+}
+
+.header {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header i {
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+.header h2 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.icono{
+  margin-right: 10px;
+}
+
+div ul {
+   display: flex;
+   align-items: center;
+}
+
+.right{
+  margin-left: auto;
+}
+
+.name {
+  margin-bottom: 1px;
+}
+
+.logo {
+  width: 15%;
+  height: auto;
+  margin-right: 1px;
+  }
+
+.padding-menu{
+  padding: 0 16px;
+}
+.margin-menu{
+  margin: 5px 0;
+}
+
+
+.active-tab,
+.active-tab:focus {
+  background-color: #577e57 !important; /* mismo verde del toolbar */
+}
+
+.active-tab span,
+.active-tab:focus span {
+  color: #fff !important;
+  font-weight: 500;
+}
+
+.logo-emssanar{
+  width: 65%;
+}
+
+.snav{
+  width: 280px;
+  background-color: #f7f7f8;
+}
+
+.username {
+  margin-right: 4px;
+  font-weight: 500;
+  color: white;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  line-height: 56px;
+  font-style: italic;
+  font-size: 18px;
+}
+.right {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  gap: 16px;
+  margin-left: auto;
+  height: auto;
+}
+.right mat-icon {
+  order: 1;
+}
+
+.logo-sagas {
+  width: 120px;       /* o el tamaño que necesites */
+  height: auto;       /* mantiene la proporción */
+  object-fit: contain;
+  transform: translateY(-2px);
+}
+
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* espacio entre ícono y texto */
+}
+
+.brand-icon {
+  width: 50px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.brand-icon:hover {
+  transform: scale(1.1) rotateY(15deg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Texto visible solo en escritorio */
+.brand-text {
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: inline;
+}
+
+.hover-card {
+  position: absolute;
+  top: 56px; /* justo debajo del toolbar */
+  right: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  width: 220px;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.hover-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+@media (max-width: 600px) {
+  .branding .brand-text {
+    display: none;
+  }
+
+  .right {
+    margin-left: auto;
+  }
+}

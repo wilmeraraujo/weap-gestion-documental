@@ -1,0 +1,158 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.main-card {
+  margin: 5px;
+  padding: 16px;
+  border-radius: 10px;
+  background-color: rgb(251, 252, 251);
+  box-sizing: border-box;
+}
+
+.titulo-card {
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #577e57 ;
+}
+
+.header {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+.encabezado-tabla {
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #f0f1f1;
+}
+
+.filtro-input {
+  width: 70%;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.btn-crear,
+.btn-anexo-tecnico1552,
+.btn-plantilla1552 {
+  width: 50px; /* tamaño más grande */
+  height: 50px;
+  border-radius: 50%; /* 🔵 Hace el botón completamente redondo */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: 0 4px 6px rgba(168, 168, 168, 0.25);
+  transition: all 0.3s ease;
+}
+
+/* Botones */
+.btn-crear {
+  background-color: white;
+  color:  #007bff;
+}
+.btn-anexo-tecnico1552 {
+  background-color: white;
+  color: #7459bd;
+}
+.btn-plantilla1552 {
+  background-color: white;
+  color: #1f7a33;
+}
+.btn-crear:hover {
+  background-color: #0056b3;
+  color: white;
+}
+.btn-anexo-tecnico1552:hover {
+  background-color: #7459bd;
+  color: white;
+}
+.btn-plantilla1552:hover {
+  background-color: #599758;
+  color: white;
+}
+
+/* Estados */
+.bg-success, .bg-warning, .bg-danger {
+  color: white;
+  padding: 4px 8px;
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 120px;
+}
+.bg-success { background-color: #28a745; }
+.bg-warning { background-color: #ffc107; color: #212529; }
+.bg-danger { background-color: #f44336; }
+
+/* Iconos acción */
+.btn-descargar-certificado,
+.btn-descargar-excel {
+  background-color: #e0e0e0 !important;
+  color: #0A7E05 !important;
+  width: 45px !important;
+  height: 45px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+}
+.btn-descargar-certificado:hover,
+.btn-descargar-excel:hover {
+  background-color: #0A7E05 !important;
+  color: white !important;
+}
+
+/* Buscador y header */
+.botones-acciones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.buscador-container {
+  flex: 0 0 50%;
+}
+.buscador-field {
+  width: 100%;
+}
+
+/* Overlay */
+.overlay-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 1055;
+  background: rgba(33, 37, 41, .5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: saturate(180%) blur(2px);
+}
+.overlay-loading .spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+.overlay-loading .label {
+  color: #fff;
+  margin-top: .5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+
+
